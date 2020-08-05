@@ -1,0 +1,5 @@
+sceneSetups:
+- path: C:/Users/jbrid/Downloads/VRMeetups-master (1)/VRMeetups-master/Assets/Scenes/MainMenu_PC.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
