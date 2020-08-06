@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CustomiseHandler : MonoBehaviour
@@ -113,5 +114,35 @@ public class CustomiseHandler : MonoBehaviour
         chosenAppearance.Add(CharacterLookController.AppearanceDetails.Shirt_Style, shirtIndex);
         chosenAppearance.Add(CharacterLookController.AppearanceDetails.Hair_Colour, hairColourIndex);
         chosenAppearance.Add(CharacterLookController.AppearanceDetails.Skin_Colour, skinColourIndex);
+    }
+
+    public void OnDisable()
+    {
+        for (int i = 0; i < bodyTypeButtons.Length; i++)
+        {
+            int bodyIndex = i;
+            bodyTypeButtons[bodyIndex].onClick.RemoveListener(() => OnBodyTypeClick(bodyIndex));
+
+        }
+        for (int i = 0; i < hairStyleButtons.Length; i++)
+        {
+            int hairIndex = i;
+            hairStyleButtons[hairIndex].onClick.RemoveListener(() => OnHairStyleClick(hairIndex));
+        }
+        for (int i = 0; i < shirtStyleButtons.Length; i++)
+        {
+            int shirtIndex = i;
+            shirtStyleButtons[shirtIndex].onClick.RemoveListener(() => OnShirtStyleClick(shirtIndex));
+        }
+        for (int i = 0; i < hairColourButtons.Length; i++)
+        {
+            int hairColourIndex = i;
+            hairColourButtons[hairColourIndex].onClick.RemoveListener(() => OnHairColourClick(hairColourIndex));
+        }
+        for (int i = 0; i < skinColourButtons.Length; i++)
+        {
+            int skinColourIndex = i;
+            skinColourButtons[skinColourIndex].onClick.RemoveListener(() => OnSkinColourClick(skinColourIndex));
+        }
     }
 }
