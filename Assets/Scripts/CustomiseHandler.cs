@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CustomiseHandler : MonoBehaviour
 {
-
+    //Editor Fields
     public CharacterLookController characterController;
 
     [SerializeField] private Transform headAnchor;
@@ -19,32 +19,29 @@ public class CustomiseHandler : MonoBehaviour
     public Button[] skinColourButtons;
     public Button[] shirtStyleButtons;
 
-    public GameObject[] bodyType;
-    public GameObject[] hairStyle;
+    public GameObject[] bodyTypes;
+    public GameObject[] hairStyles;
 
-    public Material[] hairColour;
-    public Material[] skinTone;
-    public Material[] shirtStyle;
+    public Material[] hairColours;
+    public Material[] skinTones;
+    public Material[] shirtStyles;
 
-    LookConfig myConfig = new LookConfig();
-
-    Dictionary<CharacterLookController.AppearanceDetails, int> chosenAppearance;
-
-
-    int bodyIndex;
-    int hairIndex;
-    int shirtIndex;
-    int hairColourIndex;
-    int skinColourIndex;
+    //Private Fields
+    private LookConfig myConfig = new LookConfig();
+    private int bodyIndex;
+    private int hairIndex;
+    private int shirtIndex;
+    private int hairColourIndex;
+    private int skinColourIndex;
 
 
     public void Start()
     {
-        myConfig.bodyType = bodyType[0];
-        myConfig.hairStyle = hairStyle[0];
-        myConfig.hairColour = hairColour[0];
-        myConfig.skinColour = skinTone[0];
-        myConfig.shirtStyle = shirtStyle[0];
+        myConfig.bodyType = bodyTypes[0];
+        myConfig.hairStyle = hairStyles[0];
+        myConfig.hairColour = hairColours[0];
+        myConfig.skinColour = skinTones[0];
+        myConfig.shirtStyle = shirtStyles[0];
         for (int i = 0; i < bodyTypeButtons.Length; i++)
         {
             int bodyIndex = i;
@@ -75,45 +72,46 @@ public class CustomiseHandler : MonoBehaviour
 
     public void OnBodyTypeClick(int id)
     {
-        myConfig.bodyType = bodyType[id];
+        myConfig.bodyType = bodyTypes[id];
         characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Body_Type);
     }
 
     public void OnHairStyleClick(int id)
     {
-        myConfig.hairStyle = hairStyle[id];
+        myConfig.hairStyle = hairStyles[id];
         characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Hair_Style);
         
     }
     
     public void OnShirtStyleClick(int id)
     {
-        myConfig.shirtStyle = shirtStyle[id];
+        myConfig.shirtStyle = shirtStyles[id];
         characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Shirt_Style);
     }
 
     public void OnHairColourClick(int id)
     {
-        myConfig.hairColour = hairColour[id];
+        myConfig.hairColour = hairColours[id];
         characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Hair_Colour);
       
     }
 
     public void OnSkinColourClick(int id)
     {
-        myConfig.skinColour = skinTone[id];
+        myConfig.skinColour = skinTones[id];
         characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Skin_Colour);
     
     }
 
-    public void SaveAppearanceDetails(CustomiseHandler CH)
+    public void SaveAppearanceDetails()
     {
-        chosenAppearance = new Dictionary<CharacterLookController.AppearanceDetails, int>();
-        chosenAppearance.Add(CharacterLookController.AppearanceDetails.Body_Type, bodyIndex);
-        chosenAppearance.Add(CharacterLookController.AppearanceDetails.Hair_Style, hairIndex);
-        chosenAppearance.Add(CharacterLookController.AppearanceDetails.Shirt_Style, shirtIndex);
-        chosenAppearance.Add(CharacterLookController.AppearanceDetails.Hair_Colour, hairColourIndex);
-        chosenAppearance.Add(CharacterLookController.AppearanceDetails.Skin_Colour, skinColourIndex);
+        LookConfig savedAppearance = new LookConfig();
+        savedAppearance.bodyType = bodyTypes[bodyIndex];
+        savedAppearance.hairStyle = hairStyles[hairIndex];
+        savedAppearance.hairColour = hairColours[hairColourIndex];
+        savedAppearance.skinColour = skinTones[skinColourIndex];
+        savedAppearance.shirtStyle = shirtStyles[shirtIndex];
+
     }
 
     public void OnDisable()

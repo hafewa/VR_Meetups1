@@ -63,10 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CharacterCreatorUIController.cs" />
     <Compile Include="Assets\Scripts\CharacterLookController.cs" />
     <Compile Include="Assets\Scripts\CustomiseHandler.cs" />
     <Compile Include="Assets\Scripts\LookConfig.cs" />
-    <Compile Include="Assets\Scripts\ShowMenus.cs" />
     <Compile Include="Assets\Scripts\Utils.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
