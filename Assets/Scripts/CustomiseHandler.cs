@@ -28,6 +28,7 @@ public class CustomiseHandler : MonoBehaviour
 
     //Private Fields
     private LookConfig myConfig = new LookConfig();
+
     private int bodyIndex;
     private int hairIndex;
     private int shirtIndex;
@@ -44,28 +45,28 @@ public class CustomiseHandler : MonoBehaviour
         myConfig.shirtStyle = shirtStyles[0];
         for (int i = 0; i < bodyTypeButtons.Length; i++)
         {
-            int bodyIndex = i;
+            bodyIndex = i;
             bodyTypeButtons[bodyIndex].onClick.AddListener(() => OnBodyTypeClick(bodyIndex));
             
         }
         for (int i = 0; i < hairStyleButtons.Length; i++)
         {
-            int hairIndex = i;
+            hairIndex = i;
             hairStyleButtons[hairIndex].onClick.AddListener(() => OnHairStyleClick(hairIndex));
         }
         for (int i = 0; i < shirtStyleButtons.Length; i++)
         {
-            int shirtIndex = i;
+            shirtIndex = i;
             shirtStyleButtons[shirtIndex].onClick.AddListener(() => OnShirtStyleClick(shirtIndex));
         }
         for (int i = 0; i < hairColourButtons.Length; i++)
         {
-            int hairColourIndex = i;
+            hairColourIndex = i;
             hairColourButtons[hairColourIndex].onClick.AddListener(() => OnHairColourClick(hairColourIndex));
         }
         for (int i = 0; i < skinColourButtons.Length; i++)
         {
-            int skinColourIndex = i;
+            skinColourIndex = i;
             skinColourButtons[skinColourIndex].onClick.AddListener(() => OnSkinColourClick(skinColourIndex));
         }
     }
@@ -114,33 +115,4 @@ public class CustomiseHandler : MonoBehaviour
 
     }
 
-    public void OnDisable()
-    {
-        for (int i = 0; i < bodyTypeButtons.Length; i++)
-        {
-            int bodyIndex = i;
-            bodyTypeButtons[bodyIndex].onClick.RemoveListener(() => OnBodyTypeClick(bodyIndex));
-
-        }
-        for (int i = 0; i < hairStyleButtons.Length; i++)
-        {
-            int hairIndex = i;
-            hairStyleButtons[hairIndex].onClick.RemoveListener(() => OnHairStyleClick(hairIndex));
-        }
-        for (int i = 0; i < shirtStyleButtons.Length; i++)
-        {
-            int shirtIndex = i;
-            shirtStyleButtons[shirtIndex].onClick.RemoveListener(() => OnShirtStyleClick(shirtIndex));
-        }
-        for (int i = 0; i < hairColourButtons.Length; i++)
-        {
-            int hairColourIndex = i;
-            hairColourButtons[hairColourIndex].onClick.RemoveListener(() => OnHairColourClick(hairColourIndex));
-        }
-        for (int i = 0; i < skinColourButtons.Length; i++)
-        {
-            int skinColourIndex = i;
-            skinColourButtons[skinColourIndex].onClick.RemoveListener(() => OnSkinColourClick(skinColourIndex));
-        }
-    }
 }

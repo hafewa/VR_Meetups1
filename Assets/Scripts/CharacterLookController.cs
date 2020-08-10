@@ -31,9 +31,7 @@ public class CharacterLookController : MonoBehaviour
                     {
                         GameObject.Destroy(activeBody);
                     }
-                    activeBody = GameObject.Instantiate(myConfig.bodyType);
-                    activeBody.transform.SetParent(bodyAnchor);
-                    activeBody.transform.ResetTransform();
+                    activeBody = Instantiate(myConfig.bodyType, Vector3.zero, Quaternion.identity, bodyAnchor);
                 }
                 break;
             case AppearanceDetails.Hair_Style:
@@ -42,9 +40,7 @@ public class CharacterLookController : MonoBehaviour
                     {
                         GameObject.Destroy(activeHair);
                     }
-                    activeHair = GameObject.Instantiate(myConfig.hairStyle);
-                    activeHair.transform.SetParent(headAnchor);
-                    activeHair.transform.ResetTransform();
+                    activeHair = Instantiate(myConfig.hairStyle, Vector3.zero, Quaternion.identity, headAnchor);
                 }
                 break;
             case AppearanceDetails.Shirt_Style:
