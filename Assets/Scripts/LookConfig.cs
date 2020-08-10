@@ -7,7 +7,7 @@ public class LookConfig
 {
     public GameObject bodyType;
     public GameObject hairStyle;
-    public Material shirtStyle;
-    public Material hairColour;
-    public Material skinColour;
+    public Texture2D shirtStyle;
+    public Color32 hairColour;
+    public Color32 skinColour;
 }

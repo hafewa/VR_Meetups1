@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.WSA.Input;
 
 public class CustomiseHandler : MonoBehaviour
 {
@@ -22,19 +19,13 @@ public class CustomiseHandler : MonoBehaviour
     public GameObject[] bodyTypes;
     public GameObject[] hairStyles;
 
-    public Material[] hairColours;
-    public Material[] skinTones;
-    public Material[] shirtStyles;
+    public Texture2D[] shirtStyles;
+
+    public Color32[] hairColours;
+    public Color32[] skinTones;
 
     //Private Fields
     private LookConfig myConfig = new LookConfig();
-
-    private int bodyIndex;
-    private int hairIndex;
-    private int shirtIndex;
-    private int hairColourIndex;
-    private int skinColourIndex;
-
 
     public void Start()
     {
@@ -45,28 +36,28 @@ public class CustomiseHandler : MonoBehaviour
         myConfig.shirtStyle = shirtStyles[0];
         for (int i = 0; i < bodyTypeButtons.Length; i++)
         {
-            bodyIndex = i;
+            int bodyIndex = i;
             bodyTypeButtons[bodyIndex].onClick.AddListener(() => OnBodyTypeClick(bodyIndex));
             
         }
         for (int i = 0; i < hairStyleButtons.Length; i++)
         {
-            hairIndex = i;
+            int hairIndex = i;
             hairStyleButtons[hairIndex].onClick.AddListener(() => OnHairStyleClick(hairIndex));
         }
         for (int i = 0; i < shirtStyleButtons.Length; i++)
         {
-            shirtIndex = i;
+            int shirtIndex = i;
             shirtStyleButtons[shirtIndex].onClick.AddListener(() => OnShirtStyleClick(shirtIndex));
         }
         for (int i = 0; i < hairColourButtons.Length; i++)
         {
-            hairColourIndex = i;
+            int hairColourIndex = i;
             hairColourButtons[hairColourIndex].onClick.AddListener(() => OnHairColourClick(hairColourIndex));
         }
         for (int i = 0; i < skinColourButtons.Length; i++)
         {
-            skinColourIndex = i;
+            int skinColourIndex = i;
             skinColourButtons[skinColourIndex].onClick.AddListener(() => OnSkinColourClick(skinColourIndex));
         }
     }
@@ -86,12 +77,14 @@ public class CustomiseHandler : MonoBehaviour
     
     public void OnShirtStyleClick(int id)
     {
+        print("Button " + id + " was clicked");
         myConfig.shirtStyle = shirtStyles[id];
         characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Shirt_Style);
     }
 
     public void OnHairColourClick(int id)
     {
+        print("Button " + id + " was clicked");
         myConfig.hairColour = hairColours[id];
         characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Hair_Colour);
       
@@ -99,6 +92,7 @@ public class CustomiseHandler : MonoBehaviour
 
     public void OnSkinColourClick(int id)
     {
+        print("Button " + id + " was clicked");
         myConfig.skinColour = skinTones[id];
         characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Skin_Colour);
     
@@ -107,11 +101,15 @@ public class CustomiseHandler : MonoBehaviour
     public void SaveAppearanceDetails()
     {
         LookConfig savedAppearance = new LookConfig();
-        savedAppearance.bodyType = bodyTypes[bodyIndex];
-        savedAppearance.hairStyle = hairStyles[hairIndex];
-        savedAppearance.hairColour = hairColours[hairColourIndex];
-        savedAppearance.skinColour = skinTones[skinColourIndex];
-        savedAppearance.shirtStyle = shirtStyles[shirtIndex];
+        savedAppearance.bodyType = myConfig.bodyType;
+        savedAppearance.hairStyle = myConfig.hairStyle;
+        savedAppearance.hairColour = myConfig.hairColour;
+        savedAppearance.skinColour = myConfig.skinColour;
+        savedAppearance.shirtStyle = myConfig.shirtStyle;
+    }
+
+    public void OnDisable()
+    {
 
     }
 

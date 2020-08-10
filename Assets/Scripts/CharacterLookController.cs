@@ -47,7 +47,7 @@ public class CharacterLookController : MonoBehaviour
                 {
                     if (activeShirt != null)
                     {
-                        activeShirt.GetComponent<SkinnedMeshRenderer>().material = myConfig.shirtStyle;
+                        activeShirt.GetComponent<SkinnedMeshRenderer>().material.mainTexture = myConfig.shirtStyle;
                     }
                 }
                 break;
@@ -57,7 +57,7 @@ public class CharacterLookController : MonoBehaviour
                     {
                         foreach (MeshRenderer mesh in activeHair.GetComponentsInChildren<MeshRenderer>())
                         {
-                            mesh.material = myConfig.hairColour;
+                            mesh.material.color = myConfig.hairColour;
                         }
                     }
                 }
@@ -66,7 +66,7 @@ public class CharacterLookController : MonoBehaviour
                 {
                     if (activeBody != null)
                     {
-                        activeHead.GetComponent<SkinnedMeshRenderer>().material = myConfig.skinColour;
+                        activeHead.GetComponent<SkinnedMeshRenderer>().material.color = myConfig.skinColour;
                     }
                     break;
                 }

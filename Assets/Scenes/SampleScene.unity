@@ -1776,14 +1776,30 @@ MonoBehaviour:
   - {fileID: 522193481}
   - {fileID: 1917776247}
   - {fileID: 396782473}
-  bodyTypes: []
-  hairStyles: []
+  bodyTypes:
+  - {fileID: 838744661673628381, guid: 609e417857bc2cc438e6f96fee7c974f, type: 3}
+  hairStyles:
+  - {fileID: 2959831736334270188, guid: f93ab0968c8e7a2458d7f6c544a0b301, type: 3}
+  - {fileID: 2959831736334270188, guid: 0342f4a3158d3b04d9dbce0f86ace35d, type: 3}
+  - {fileID: 2959831736334270188, guid: 448c9d7dd0752e64ca45352f2a25690c, type: 3}
+  shirtStyles:
+  - {fileID: 2800000, guid: c876e70fa95812345afcc735c42b3e82, type: 3}
+  - {fileID: 2800000, guid: 6d3555678c3ad4b47beaa4d8a78d5a40, type: 3}
+  - {fileID: 2800000, guid: 7e5be12b2c696914a8e6da0e49ea9ef0, type: 3}
   hairColours:
-  - {fileID: 2100000, guid: 0e029db3ca088214091ae0764e28881b, type: 2}
-  - {fileID: 2100000, guid: 96cf44a1dbe4abc4081c8dc01df3a021, type: 2}
-  - {fileID: 2100000, guid: 8cdfed9e21c6cde4882e2a09b6776045, type: 2}
-  skinTones: []
-  shirtStyles: []
+  - serializedVersion: 2
+    rgba: 8650651
+  - serializedVersion: 2
+    rgba: 255
+  - serializedVersion: 2
+    rgba: 2054588
+  skinTones:
+  - serializedVersion: 2
+    rgba: 6912743
+  - serializedVersion: 2
+    rgba: 10789841
+  - serializedVersion: 2
+    rgba: 2764633
 --- !u!1 &396782471
 GameObject:
   m_ObjectHideFlags: 0
@@ -2946,7 +2962,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 3.0092666e-36, y: 1.009742e-28, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 234169700, y: 3.0980883e+32, z: 45993410, w: -9.562635e-10}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -6599,7 +6615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 225, y: -220}
+  m_AnchoredPosition: {x: 235, y: -240}
   m_SizeDelta: {x: 50, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1704229741
@@ -6645,8 +6661,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4116392}
-        m_MethodName: 
+      - m_Target: {fileID: 381537527}
+        m_MethodName: SaveAppearanceDetails
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
