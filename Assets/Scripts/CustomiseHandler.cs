@@ -110,7 +110,25 @@ public class CustomiseHandler : MonoBehaviour
 
     public void OnDisable()
     {
-
+        foreach(Button button in bodyTypeButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach(Button button in hairStyleButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach(Button button in hairColourButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach(Button button in skinColourButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach(Button button in shirtStyleButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
     }
-
 }

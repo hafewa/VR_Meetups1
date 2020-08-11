@@ -289,5 +289,6 @@
 Assets\Scripts\CharacterCreatorUIController.cs
 Assets\Scripts\CharacterLookController.cs
 Assets\Scripts\CustomiseHandler.cs
+Assets\Scripts\IconHandler.cs
 Assets\Scripts\LookConfig.cs
 Assets\Scripts\Utils.cs

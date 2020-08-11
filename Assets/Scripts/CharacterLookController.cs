@@ -32,6 +32,8 @@ public class CharacterLookController : MonoBehaviour
                         GameObject.Destroy(activeBody);
                     }
                     activeBody = Instantiate(myConfig.bodyType, Vector3.zero, Quaternion.identity, bodyAnchor);
+                    activeBody.transform.ResetTransform();
+                    activeShirt.GetComponent<SkinnedMeshRenderer>().material.mainTexture = myConfig.shirtStyle;
                 }
                 break;
             case AppearanceDetails.Hair_Style:
@@ -41,6 +43,11 @@ public class CharacterLookController : MonoBehaviour
                         GameObject.Destroy(activeHair);
                     }
                     activeHair = Instantiate(myConfig.hairStyle, Vector3.zero, Quaternion.identity, headAnchor);
+                    activeHair.transform.ResetTransform();
+                    foreach(MeshRenderer mesh in activeHair.GetComponentsInChildren<MeshRenderer>())
+                    {
+                        mesh.material.color = myConfig.hairColour;
+                    }
                 }
                 break;
             case AppearanceDetails.Shirt_Style:
