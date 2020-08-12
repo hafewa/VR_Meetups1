@@ -110,6 +110,9 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/jbrid/OneDrive/Documents/Virtual Internship - vreestory/VR_Meetups/VR_Meetups/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="Nobi.UiRoundedCorners">
+      <HintPath>C:/Users/jbrid/OneDrive/Documents/Virtual Internship - vreestory/VR_Meetups/VR_Meetups/Library/ScriptAssemblies/Nobi.UiRoundedCorners.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/jbrid/OneDrive/Documents/Virtual Internship - vreestory/VR_Meetups/VR_Meetups/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
