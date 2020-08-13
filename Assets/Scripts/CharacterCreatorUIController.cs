@@ -5,22 +5,12 @@ using UnityEngine;
 
 public class CharacterCreatorUIController : MonoBehaviour
 {
-
-
     public enum Menus
     {
         BodyMenu = 0,
         HairMenu = 1,
         SkinMenu = 2,
         ShirtMenu = 3,
-    }
-
-    public enum Buttons
-    {
-        BodyButton = 0,
-        HairButton = 1,
-        SkinButton = 2,
-        ShirtButton = 3,
     }
 
     public GameObject[] menus;

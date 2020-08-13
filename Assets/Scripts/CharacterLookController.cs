@@ -4,80 +4,51 @@ using UnityEngine;
 
 public class CharacterLookController : MonoBehaviour
 {
-    public Transform headAnchor;
-    public Transform bodyAnchor;
-
-    public enum AppearanceDetails
+    public enum BodyPart
     {
-        Body_Type,
-        Hair_Style,
-        Hair_Colour,
-        Skin_Colour,
-        Shirt_Style,
-        Shirt_Colour,
+        Body,
+        ShirtTexture,
+        SkinColor,
+        Hair
     }
 
-    public GameObject activeHead;
-    public GameObject activeBody;
-    public GameObject activeHair;
-    public GameObject activeShirt;
+    public GameObject head;
+    public GameObject body;
+    public GameObject hair;
 
-    public void ApplyChanges(LookConfig myConfig, AppearanceDetails details)
+    public void ApplyChanges(LookConfig myConfig, BodyPart details)
     {
         switch (details){
-            case AppearanceDetails.Body_Type:
+            case BodyPart.Body:
                 {
-                    if (activeBody !=null)
-                    {
-                        GameObject.Destroy(activeBody);
-                    }
-                    activeBody = Instantiate(myConfig.bodyType, Vector3.zero, Quaternion.identity, bodyAnchor);
-                    activeBody.transform.ResetTransform();
-                    activeShirt.GetComponent<SkinnedMeshRenderer>().material.mainTexture = myConfig.shirtStyle;
+                    body.GetComponent<SkinnedMeshRenderer>().sharedMesh = myConfig.bodyType;
+                    break;
                 }
-                break;
-            case AppearanceDetails.Hair_Style:
+            case BodyPart.ShirtTexture:
                 {
-                    if (activeHair != null)
+                    body.GetComponent<SkinnedMeshRenderer>().material.mainTexture = myConfig.shirtStyle;
+                    break;
+                }
+            case BodyPart.SkinColor:
+                {
+                    head.GetComponent<SkinnedMeshRenderer>().material.color = myConfig.skinColour;
+                    break;
+                }
+            case BodyPart.Hair:
+                {
+                    foreach(Transform t in hair.transform)
                     {
-                        GameObject.Destroy(activeHair);
+                        Destroy(t.gameObject);
                     }
-                    activeHair = Instantiate(myConfig.hairStyle, Vector3.zero, Quaternion.identity, headAnchor);
-                    activeHair.transform.ResetTransform();
-                    foreach(MeshRenderer mesh in activeHair.GetComponentsInChildren<MeshRenderer>())
+
+                    var hairGO = Instantiate(myConfig.hairStyle, hair.transform, false);
+
+                    foreach(MeshRenderer mesh in hair.GetComponentsInChildren<MeshRenderer>())
                     {
                         mesh.material.color = myConfig.hairColour;
-                    }
-                }
-                break;
-            case AppearanceDetails.Shirt_Style:
-                {
-                    if (activeShirt != null)
-                    {
-                        activeShirt.GetComponent<SkinnedMeshRenderer>().material.mainTexture = myConfig.shirtStyle;
-                    }
-                }
-                break;
-            case AppearanceDetails.Hair_Colour:
-                {
-                    if (activeHair != null)
-                    {
-                        foreach (MeshRenderer mesh in activeHair.GetComponentsInChildren<MeshRenderer>())
-                        {
-                            mesh.material.color = myConfig.hairColour;
-                        }
-                    }
-                }
-                break;
-            case AppearanceDetails.Skin_Colour:
-                {
-                    if (activeBody != null)
-                    {
-                        activeHead.GetComponent<SkinnedMeshRenderer>().material.color = myConfig.skinColour;
                     }
                     break;
                 }
         }
-
     }
 }

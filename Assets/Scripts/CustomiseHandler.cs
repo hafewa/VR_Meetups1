@@ -4,41 +4,43 @@ using UnityEngine.XR.WSA.Input;
 
 public class CustomiseHandler : MonoBehaviour
 {
-    //Editor Fields
     public CharacterLookController characterController;
 
-    [SerializeField] private Transform headAnchor;
-    [SerializeField] private Transform bodyAnchor;
-
+    [Header("UI Buttons")]
     public Button[] bodyTypeButtons;
     public Button[] hairStyleButtons;
     public Button[] hairColourButtons;
     public Button[] skinColourButtons;
     public Button[] shirtStyleButtons;
 
-    public GameObject[] bodyTypes;
+    [Header("Options")]
+    public Mesh[] bodyTypes;
     public GameObject[] hairStyles;
-
     public Texture2D[] shirtStyles;
-
     public Color32[] hairColours;
     public Color32[] skinTones;
 
-    //Private Fields
-    private LookConfig myConfig = new LookConfig();
+    private LookConfig myConfig;
 
     public void Start()
     {
-        myConfig.bodyType = bodyTypes[0];
-        myConfig.hairStyle = hairStyles[0];
-        myConfig.hairColour = hairColours[0];
-        myConfig.skinColour = skinTones[0];
-        myConfig.shirtStyle = shirtStyles[0];
+        myConfig = new LookConfig()
+        {
+            bodyType = bodyTypes[0],
+            hairStyle = hairStyles[0],
+            hairColour = hairColours[0],
+            skinColour = skinTones[0],
+            shirtStyle = shirtStyles[0]
+        };
+    }
+
+    private void OnEnable()
+    {
         for (int i = 0; i < bodyTypeButtons.Length; i++)
         {
             int bodyIndex = i;
             bodyTypeButtons[bodyIndex].onClick.AddListener(() => OnBodyTypeClick(bodyIndex));
-            
+
         }
         for (int i = 0; i < hairStyleButtons.Length; i++)
         {
@@ -62,39 +64,60 @@ public class CustomiseHandler : MonoBehaviour
         }
     }
 
+    public void OnDisable()
+    {
+        foreach (Button button in bodyTypeButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach (Button button in hairStyleButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach (Button button in hairColourButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach (Button button in skinColourButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach (Button button in shirtStyleButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+    }
+
     public void OnBodyTypeClick(int id)
     {
         myConfig.bodyType = bodyTypes[id];
-        characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Body_Type);
+        characterController.ApplyChanges(myConfig, CharacterLookController.BodyPart.Body);
     }
 
     public void OnHairStyleClick(int id)
     {
         myConfig.hairStyle = hairStyles[id];
-        characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Hair_Style);
+        characterController.ApplyChanges(myConfig, CharacterLookController.BodyPart.Hair);
         
     }
     
     public void OnShirtStyleClick(int id)
     {
-        print("Button " + id + " was clicked");
         myConfig.shirtStyle = shirtStyles[id];
-        characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Shirt_Style);
+        characterController.ApplyChanges(myConfig, CharacterLookController.BodyPart.ShirtTexture);
     }
 
     public void OnHairColourClick(int id)
     {
-        print("Button " + id + " was clicked");
         myConfig.hairColour = hairColours[id];
-        characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Hair_Colour);
+        characterController.ApplyChanges(myConfig, CharacterLookController.BodyPart.Hair);
       
     }
 
     public void OnSkinColourClick(int id)
     {
-        print("Button " + id + " was clicked");
         myConfig.skinColour = skinTones[id];
-        characterController.ApplyChanges(myConfig, CharacterLookController.AppearanceDetails.Skin_Colour);
+        characterController.ApplyChanges(myConfig, CharacterLookController.BodyPart.SkinColor);
     
     }
 
@@ -106,29 +129,5 @@ public class CustomiseHandler : MonoBehaviour
         savedAppearance.hairColour = myConfig.hairColour;
         savedAppearance.skinColour = myConfig.skinColour;
         savedAppearance.shirtStyle = myConfig.shirtStyle;
-    }
-
-    public void OnDisable()
-    {
-        foreach(Button button in bodyTypeButtons)
-        {
-            button.onClick.RemoveAllListeners();
-        }
-        foreach(Button button in hairStyleButtons)
-        {
-            button.onClick.RemoveAllListeners();
-        }
-        foreach(Button button in hairColourButtons)
-        {
-            button.onClick.RemoveAllListeners();
-        }
-        foreach(Button button in skinColourButtons)
-        {
-            button.onClick.RemoveAllListeners();
-        }
-        foreach(Button button in shirtStyleButtons)
-        {
-            button.onClick.RemoveAllListeners();
-        }
     }
 }
